@@ -1,0 +1,98 @@
+addelement('Waveguide Coupler');
+set('name', 'WC1');
+set('x position', -200);
+set('y position', -300);
+
+addelement('Waveguide Coupler');
+set('name', 'WC2');
+set('x position', -200);
+set('y position', 300);
+#addelement('Straight Waveguide');
+
+
+addelement('Straight Waveguide');
+set('name', 'WG1');
+set('x position', -400);
+set('y position', 100);
+set('rotated',1);
+
+
+
+addelement('Straight Waveguide');
+set('name', 'WG2');
+set('x position', 0);
+set('y position', 100);
+set('rotated',1);
+
+addelement('Optical Modulator Measured');
+set('name', 'OM1');
+set('x position', -400);
+set('y position', -100);
+set('rotated',1);
+
+addelement('Optical Modulator Measured');
+set('name', 'OM2');
+set('x position', 0);
+set('y position', -100);
+set('rotated',3);
+
+
+
+connect('WC1', 'port 2', 'OM1', 'port 1');
+connect('WC1', 'port 4', 'OM2', 'port 2');
+
+connect('WC2', 'port 1', 'WG1', 'port 2');
+connect('WC2', 'port 3', 'WG2', 'port 2');
+
+connect('WG1', 'port 1', 'OM1', 'port 2');
+connect('WG2', 'port 1', 'OM2', 'port 1');
+
+
+select('WC1');
+shiftselect('WC2');
+
+shiftselect('WG1');
+shiftselect('WG2');
+
+shiftselect('OM1');
+shiftselect('OM2');
+createcompound;
+
+addport('COMPOUND_1', 'Input_1', 'Bidirectional', 'Optical', 'Left', 0.1);
+select('COMPOUND_1::RELAY_1');
+set('x position', -500);
+set('y position', -300);
+set('rotated',2);
+connect('COMPOUND_1::WC1', 'port 1', 'COMPOUND_1::RELAY_1', 'port');
+
+addport('COMPOUND_1', 'Input_2', 'Bidirectional', 'Optical', 'Left', 0.9);
+select('COMPOUND_1::RELAY_2');
+set('x position', -500);
+set('y position', 300);
+ set('rotated',2);
+connect('COMPOUND_1::WC2', 'port 2', 'COMPOUND_1::RELAY_2', 'port');
+
+addport('COMPOUND_1', 'Input_3', 'Bidirectional', 'Optical', 'Right', 0.1);
+select('COMPOUND_1::RELAY_3');
+set('x position', 100);
+set('y position', -300);
+set('rotated',4);
+connect('COMPOUND_1::WC1', 'port 3', 'COMPOUND_1::RELAY_3', 'port');
+
+addport('COMPOUND_1', 'Input_4', 'Bidirectional', 'Optical', 'Right', 0.9);
+select('COMPOUND_1::RELAY_4');
+set('x position', 100);
+set('y position', 300);
+ set('rotated',4);
+connect('COMPOUND_1::WC2', 'port 4', 'COMPOUND_1::RELAY_4', 'port');
+
+
+
+addport('COMPOUND_1', 'Input_5', 'Bidirectional','Electrical', 'Top');
+select('COMPOUND_1::RELAY_5');
+set('x position', -200);
+set('y position', 200);
+set('rotated',4);
+connect('COMPOUND_1::OM1', 'modulation', 'COMPOUND_1::RELAY_5', 'port');
+connect('COMPOUND_1::OM2', 'modulation', 'COMPOUND_1::RELAY_5', 'port');
+

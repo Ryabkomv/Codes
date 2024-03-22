@@ -1,0 +1,19 @@
+Ansys Lumerical 2021 R1.1 Charge Transport Solver Version 7.7.2599 (Windows 64bit)
+ expires (month/day/year): 3/4/2022
+using config file: Ansys Licensing set with ANSYSLMD_LICENSE_FILE
+license host: 27080@106.109.9.250
+current time: Thu Jun 17 20:07:36 2021
+Running on host: m-ryabko01
+Running ldev file: C:\Program Files\Lumerical\v211\bin\device-engine-msmpi.exe G:/Work/Projects/2021/LWIR/Modulator/Source/Charge.ldev -remote
+  ...G:/Work/Projects/2021/LWIR/Modulator/Source/Charge.ldev loaded
+Remote execution (remote argument) set to true.
+Generating mesh.
+Refinement limit exceeded for optical generation rate constraint. The mesh is valid but may not be adequately refined.
+Mesh generation complete (6s)
+  + vertices: 53426
+  + elements: 322788
+All processes are communicating and ready to proceed to simulation...
+Starting solver.
+Simulation completed successfully at: Thu Jun 17 20:17:23 2021
+  + time to run simulation: 578s
+  + time to finalize and save data: 2s
